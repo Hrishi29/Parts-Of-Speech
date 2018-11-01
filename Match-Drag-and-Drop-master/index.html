@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Match</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Kalam" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">    <!--Custom CSS-->
+    <link rel="stylesheet" href="css/style.css">
+    <!--<link rel="shortcut icon " type="image/png" href="images/fav1.png">-->
+    <script src="js/prefixfree.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Jquery UI-->
+    <link rel="stylesheet" href="resources/jquery-ui-1.12.1/jquery-ui.css"/>
+
+</head>
+
+<body>
+
+<header>
+    <nav class="navbar navbar-default navbar-fixed-top" id="header-nav">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="./"><i class="far fa-lightbulb fa-3x" style="color:#ff4f5c" aria-hidden="true"></i><span  class="icon-logo-title">Match</span></a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="./">ABOUT</a></li>
+                    <li><a href="./">CONTACT US</a></li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </nav>  <!--header navbar-->
+</header>
+
+<div class="container-fluid" id="main-body">
+     <div class="row" id="section-drag">
+         <div class="col-sm-12 dragarea">
+             <div id="draggble-items">
+                 <p class="drag-Question"></p>
+                 <p style="text-align:center" id="butns-area">
+                 </p>
+             </div>
+             <div id="comment-section" class="col-sm-12">
+                 Please try once again
+             </div>
+         </div>
+     </div>
+
+
+    <!--Draggble items-->
+    <div class="row" id="section-drop">
+        <div id="droppable-items">
+            <div class="col-sm-3">
+                <div id="Subjective-Pronoun" class="target drop-panel">
+                  <h2>Subjective Pronoun</h2>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div id="Objective-Pronoun" class="target drop-panel">
+                    <h2>Objective Pronoun</h2>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div id="Possessive-Pronoun" class="target drop-panel">
+                    <h2>Possessive Pronoun</h2>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div id="Main-Verb" class="target drop-panel">
+                    <h2>Main Verb</h2>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div id="Auxiliary-Verb" class="target drop-panel">
+                    <h2>Auxiliary Verb</h2>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div id="Secondary-Verb" class="target drop-panel">
+                    <h2>Secondary Verb</h2>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div id="Preposition" class="target drop-panel">
+                    <h2>Preposition</h2>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div id="Conjunction" class="target drop-panel">
+                    <h2>Conjunction</h2>
+                </div>
+            </div>
+        </div>
+
+        <!--diallog box-->
+        <!--<div id="dialog-message">-->
+            <!--<p>Please try once again</p>-->
+        <!--</div>-->
+
+    </div>
+    <!--Droppable items-->
+
+
+    </div> <!--Container-->
+
+<!--footer-->
+<footer>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12 footer-content">
+                &copy; 2018
+            </div>
+        </div>
+
+    </div>
+</footer>
+
+<!--Jquery UI-->
+<script type="text/javascript" src="resources/jquery-ui-1.12.1/external/jquery/jquery.js"></script>
+<script type="text/javascript" src="resources/jquery-ui-1.12.1/jquery-ui.js"></script>
+<!--Bootstrap-->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!--Custom JS-->
+<script src="js/script.js"></script>
+
+</body> <!--body-->
+</html>

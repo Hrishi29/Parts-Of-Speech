@@ -1,0 +1,14 @@
+{
+   
+    "Subject Pronouns": [
+        { "1":"Ooopps!! Please try again. Remember: this part of speech replaces a person or object."},
+        { "2":"Good try. Please try again. Remember: try using the “HE” rule"},
+        { "3":"Looks like you could use some help: this is a pronoun – it is subjective because it serves as the subject of the verb."}
+    ],
+    
+    "Objective Pronouns": [
+        { "1":"Ooooppps!! Please try again. Remember: this part of speech replaces a person or object."},
+        { "2":"Good try. Please try again. Remember: using the “HE” rule might help."},
+        { "3":"Looks like you could use some help: this is a pronoun – it is objective because it serves as the object of the verb."}
+    ]
+ }
