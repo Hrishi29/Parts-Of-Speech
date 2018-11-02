@@ -4,7 +4,8 @@ $(function(){
     var words; // Global variable
     var sentencename;
     var checkWord;
-    
+    var cuingCounter = []; 
+    var outside = 0;
     function dragWords() { 
 // Drag and Drop
     for (i = 0; i < words.length; i++) {
@@ -14,37 +15,67 @@ $(function(){
             helper: "clone",
             cancel: false,
             revert: function (event, ui) {
-                 
+                console.log(event); 
                 if(!event){
+                    
                     // dialg box
                     // $('#section-drop').css({'filter': 'blur(5px)'});
                     // $("#dialog-message").dialog("open");
                     // comment section
-                    $('#comment-section').text('Please try once again');
+                    if(!cuingCounter[$(this).attr("id")])
+                    {
+                        cuingCounter[$(this).attr("id")] = 1;
+                       // console.log($(this).attr("id"));
+                        console.log(cuingCounter);
+                    }
+                    else { if(cuingCounter[$(this).attr("id")] < 3){cuingCounter[$(this).attr("id")] += 1;}console.log(cuingCounter);}
+                   // cuiRequest(checkWord);
+                   
+                     $('#comment-section').text('Please try once again');
                     $('#comment-section').removeClass('comment-success')
                     $('#comment-section').css({"opacity":"1"});
                     $('#comment-section').addClass('comment-sec')
+                   
+                        
                 }
                 return !event;
-            }
+            },
+          start: function(event, ui) {
+                    ui.helper.data('dropped', false);
+                    
+                },
+          stop: function(event, ui)
+                {
+                    console.log('stop: dropped=' + ui.helper.data('dropped'));
+                    if(ui.helper.data('dropped') == false){
+                   
+                    // Check value of ui.helper.data('dropped') and handle accordingly...
+                    }
+                }
         });
+        
+       
     }
 
     }
-
+    
+  
     $("#Subjective-Pronoun").droppable({
         accept: function(d) {
            var returnreq =  matchRequest(d);
             if ('Subjective Pronoun' != returnreq){
+                
                 return false;
             }
-            else {return true;}
+            else {cuingCounter[d.attr("id")] = 0; return true;}
         },
-
+        
+        
 
         // hoverClass: "highlight",
         tolerance: "fit",
-
+        
+        
         activate: function (evt, ui) {
             // $(this).find("h2").css("background-color", "cornsilk");
         },
@@ -52,6 +83,7 @@ $(function(){
             $(this).find("h2").css("background-color", "");
         },
         drop: function(evt, ui) {
+            ui.helper.data('dropped', true);
             $(this).css({'background-color':'rgb(5, 107, 98)'});
             $(this).find('h2').css({'color':'#fff'});
             $(this).append($(ui.draggable).clone());
@@ -63,7 +95,7 @@ $(function(){
 
             var IDs = [];
             $("#droppable-items").find("button").each(function(){ IDs.push(this.id); });
-            console.log(IDs);
+          //  console.log(IDs);
 
             for (i = 0; i < IDs.length; i++) {
                 $('#'+IDs[i]).draggable({ disabled: true });
@@ -389,6 +421,7 @@ $(function(){
         dragWords();
     }
 
+    
     function sentenceRequest(){
         
         var xmlhttp = new XMLHttpRequest();
@@ -435,6 +468,29 @@ $(function(){
     }
     
     
+    function cuiRequest(cuiElement){
+        
+        var xmlhttp = new XMLHttpRequest();
+        
+        xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+                myObj = JSON.parse(this.responseText);
+              
+                var qcheck = checkd.text();
+            
+                checkWord = myObj['Set21'][qcheck];
+                
+               
+                
+        }
+            
+            
+        };
+        xmlhttp.open("GET", "cuiheirarchy.php", true);
+        xmlhttp.send();
+       
+        return checkWord;
+    }
     // function to display comments
  function displayCommentSuccess(){
      $('#comment-section').removeClass('comment-sec');
