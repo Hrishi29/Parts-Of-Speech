@@ -48,6 +48,32 @@ header .navbar-default {
 
 /*body*/
 
+.modal {
+  text-align: center;
+}
+
+#nextBtn {
+    
+    text-align:center;
+    margin-bottom: 10px;
+    display: none;
+}
+
+@media screen and (min-width: 768px) { 
+  .modal:before {
+    display: inline-block;
+    vertical-align: middle;
+    content: " ";
+    height: 100%;
+  }
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
+
 #main-body{
     margin-top:90px;
 }
@@ -95,8 +121,29 @@ header .navbar-default {
     /*overflow: hidden*/
   padding-bottom: 10px;
 }
-.target {
+.target-subjective {
+    background-color: #FB6868;
+}
+.target-objective {
+    background-color: #FA765A;
+}
+.target-possessive {
+    background-color: #F7E975;
+}
+.target-main {
     background-color: #8FD8D2;
+}
+.target-aux {
+    background-color: #6CA0F4;
+}
+.target-second {
+    background-color: #EB9DFA;
+}
+.target-prep {
+    background-color: #9C95F6;
+}
+.target-con {
+    background-color: #FE77BE;
 }
 .highlight {
     background-color: yellow;
@@ -237,6 +284,7 @@ footer .row{
 /*comment section*/
 #comment-section{
     opacity:0;
+    margin-bottom: 10px;
 }
 
 .comment-sec{
@@ -248,7 +296,7 @@ footer .row{
 
 .comment-success{
     text-align: center;
-    font-size: 0.9em;
+    font-size: 1em;
     color: green;
     font-weight: 500;
 }

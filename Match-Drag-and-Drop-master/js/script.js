@@ -1,12 +1,47 @@
 $(function(){
-    sentenceRequest(); 
     
     var words; // Global variable
     var sentencename;
     var checkWord;
     var cuingCounter = []; 
-    var outside = 0;
-    function dragWords() { 
+    var checkError;
+    var disabledWords = [];
+    var checkSuccess;
+    var iniIDs = [];
+    var sentNum = 'Set';
+    var sentCounter = 21;
+    
+  //  $("#myModal").modal({keyboard: false});
+    $("#modalButton").click(function(){
+        
+        if (($("#usrname").val()) != "")
+            {
+                $("#myModal").modal("hide");
+                $("#userName").text("Welcome" + " " + $("#usrname").val());
+                $("#userName").css({"color" : "red"}, {"font-weight" : "bold"});
+            }
+        
+    });
+    
+    $("#nextBtn").click(function(){
+        $("#butns-area").empty();
+        $("#droppable-items").find("button").remove();
+        $("#droppable-items").find("h2").css("color", "black");
+        $('#comment-section').css({"opacity":"0"});
+        $("#nextBtn").toggle();
+        sentNum = 'Set';
+        sentCounter += 1; 
+        cuingCounter.splice(0, cuingCounter.length);
+        disabledWords.splice(0, disabledWords.length);
+        iniIDs.splice(0, iniIDs.length);
+        sentenceRequest(); 
+    });
+    
+    sentenceRequest(); 
+    
+    
+    function dragWords() {
+        
 // Drag and Drop
     for (i = 0; i < words.length; i++) {
         
@@ -15,62 +50,46 @@ $(function(){
             helper: "clone",
             cancel: false,
             revert: function (event, ui) {
-                console.log(event); 
+                
                 if(!event){
                     
                     // dialg box
                     // $('#section-drop').css({'filter': 'blur(5px)'});
                     // $("#dialog-message").dialog("open");
                     // comment section
+                    
                     if(!cuingCounter[$(this).attr("id")])
                     {
                         cuingCounter[$(this).attr("id")] = 1;
                        // console.log($(this).attr("id"));
-                        console.log(cuingCounter);
+                       // console.log(cuingCounter);
                     }
-                    else { if(cuingCounter[$(this).attr("id")] < 3){cuingCounter[$(this).attr("id")] += 1;}console.log(cuingCounter);}
-                   // cuiRequest(checkWord);
+                    else { if(cuingCounter[$(this).attr("id")] < 3){cuingCounter[$(this).attr("id")] += 1;};}
+                    //console.log(cuingCounter);
+                    cuiRequest(cuingCounter[$(this).attr("id")]);
                    
-                     $('#comment-section').text('Please try once again');
-                    $('#comment-section').removeClass('comment-success')
-                    $('#comment-section').css({"opacity":"1"});
-                    $('#comment-section').addClass('comment-sec')
-                   
-                        
+                    
                 }
                 return !event;
-            },
-          start: function(event, ui) {
-                    ui.helper.data('dropped', false);
-                    
-                },
-          stop: function(event, ui)
-                {
-                    console.log('stop: dropped=' + ui.helper.data('dropped'));
-                    if(ui.helper.data('dropped') == false){
-                   
-                    // Check value of ui.helper.data('dropped') and handle accordingly...
-                    }
-                }
+            }
+            
+            
+            
         });
-        
-       
     }
 
     }
-    
-  
+
     $("#Subjective-Pronoun").droppable({
         accept: function(d) {
            var returnreq =  matchRequest(d);
             if ('Subjective Pronoun' != returnreq){
-                
+               // console.log(returnreq)
                 return false;
             }
-            else {cuingCounter[d.attr("id")] = 0; return true;}
+            else { return true;}
         },
-        
-        
+
 
         // hoverClass: "highlight",
         tolerance: "fit",
@@ -83,19 +102,19 @@ $(function(){
             $(this).find("h2").css("background-color", "");
         },
         drop: function(evt, ui) {
-            ui.helper.data('dropped', true);
-            $(this).css({'background-color':'rgb(5, 107, 98)'});
+           // $(this).css({'background-color':'rgb(5, 107, 98)'});
             $(this).find('h2').css({'color':'#fff'});
             $(this).append($(ui.draggable).clone());
             //shake effect
             // $(this).effect( "shake", { times:2 }, 300);
 
             // display Comment success
+            
             displayCommentSuccess();
 
             var IDs = [];
             $("#droppable-items").find("button").each(function(){ IDs.push(this.id); });
-          //  console.log(IDs);
+            //console.log(IDs);
 
             for (i = 0; i < IDs.length; i++) {
                 $('#'+IDs[i]).draggable({ disabled: true });
@@ -104,6 +123,9 @@ $(function(){
                 $('#'+IDs[i]).css({ "pointer-events": "none"});
 
             }
+            
+            nextSentence(IDs);
+            
         }
     });
     
@@ -127,7 +149,7 @@ $(function(){
             $(this).find("h2").css("background-color", "");
         },
         drop: function(evt, ui) {
-            $(this).css({'background-color':'rgb(5, 107, 98)'});
+            //$(this).css({'background-color':'rgb(5, 107, 98)'});
             $(this).find('h2').css({'color':'#fff'});
             $(this).append($(ui.draggable).clone());
             //shake effect
@@ -138,7 +160,7 @@ $(function(){
 
             var IDs = [];
             $("#droppable-items").find("button").each(function(){ IDs.push(this.id); });
-            console.log(IDs);
+         //   console.log(IDs);
 
             for (i = 0; i < IDs.length; i++) {
                 $('#'+IDs[i]).draggable({ disabled: true });
@@ -147,6 +169,8 @@ $(function(){
                 $('#'+IDs[i]).css({ "pointer-events": "none"});
 
             }
+            
+            nextSentence(IDs);
         }
     });
 
@@ -170,7 +194,7 @@ $(function(){
             $(this).find("h2").css("background-color", "");
         },
         drop: function(evt, ui) {
-            $(this).css({'background-color':'rgb(5, 107, 98)'});
+          //  $(this).css({'background-color':'rgb(5, 107, 98)'});
             $(this).find('h2').css({'color':'#fff'});
             $(this).append($(ui.draggable).clone());
             //shake effect
@@ -181,7 +205,7 @@ $(function(){
 
             var IDs = [];
             $("#droppable-items").find("button").each(function(){ IDs.push(this.id); });
-            console.log(IDs);
+          //  console.log(IDs);
 
             for (i = 0; i < IDs.length; i++) {
                 $('#'+IDs[i]).draggable({ disabled: true });
@@ -190,6 +214,8 @@ $(function(){
                 $('#'+IDs[i]).css({ "pointer-events": "none"});
 
             }
+            
+            nextSentence(IDs);
         }
     });
     
@@ -212,7 +238,7 @@ $(function(){
             $(this).find("h2").css("background-color", "");
         },
         drop: function(evt, ui) {
-            $(this).css({'background-color':'rgb(5, 107, 98)'});
+          //  $(this).css({'background-color':'rgb(5, 107, 98)'});
             $(this).find('h2').css({'color':'#fff'});
             $(this).append($(ui.draggable).clone());
             
@@ -224,7 +250,7 @@ $(function(){
 
             var IDs = [];
             $("#droppable-items").find("button").each(function(){ IDs.push(this.id); });
-            console.log(IDs);
+            //console.log(IDs);
 
             for (i = 0; i < IDs.length; i++) {
                 $('#'+IDs[i]).draggable({ disabled: true });
@@ -233,6 +259,8 @@ $(function(){
                 $('#'+IDs[i]).css({ "pointer-events": "none"});
 
             }
+            
+            nextSentence(IDs);
         }
     });
 
@@ -255,17 +283,18 @@ $(function(){
             $(this).find("h2").css("background-color", "");
         },
         drop: function(evt, ui) {
-            $(this).css({'background-color':'rgb(5, 107, 98)'});
+          //  $(this).css({'background-color':'rgb(5, 107, 98)'});
             $(this).find('h2').css({'color':'#fff'});
             $(this).append($(ui.draggable).clone());
-            $()
-
-            console.log(  $(this).find('h2').css({'background-color':'#4e5a59'}));
+            
+             // display Comment success
+            displayCommentSuccess();
+          //  $(this).find('h2').css({'background-color':'#4e5a59'});
 
 
             var IDs = [];
             $("#droppable-items").find("button").each(function(){ IDs.push(this.id); });
-            console.log(IDs);
+          //  console.log(IDs);
 
             for (i = 0; i < IDs.length; i++) {
                 $('#'+IDs[i]).draggable({ disabled: true });
@@ -274,6 +303,8 @@ $(function(){
                 $('#'+IDs[i]).css({ "pointer-events": "none"});
 
             }
+            
+            nextSentence(IDs);
         }
     });
 
@@ -296,12 +327,13 @@ $(function(){
                 $(this).find("h2").css("background-color", "");
             },
             drop: function(evt, ui) {
-                $(this).css({'background-color':'rgb(5, 107, 98)'});
+             //   $(this).css({'background-color':'rgb(5, 107, 98)'});
                 $(this).find('h2').css({'color':'#fff'});
                 $(this).append($(ui.draggable).clone());
-                $()
-
-                console.log(  $(this).find('h2').css({'background-color':'#4e5a59'}));
+                
+                 // display Comment success
+                displayCommentSuccess();
+             //   console.log(  $(this).find('h2').css({'background-color':'#4e5a59'}));
 
 
                 var IDs = [];
@@ -315,6 +347,7 @@ $(function(){
                     $('#'+IDs[i]).css({ "pointer-events": "none"});
 
                 }
+                nextSentence(IDs);
             }
         });
 
@@ -337,17 +370,18 @@ $(function(){
                 $(this).find("h2").css("background-color", "");
             },
             drop: function(evt, ui) {
-                $(this).css({'background-color':'rgb(5, 107, 98)'});
+              //  $(this).css({'background-color':'rgb(5, 107, 98)'});
                 $(this).find('h2').css({'color':'#fff'});
                 $(this).append($(ui.draggable).clone());
-                $()
-
-                console.log(  $(this).find('h2').css({'background-color':'#4e5a59'}));
+                
+                 // display Comment success
+                displayCommentSuccess();
+       //         console.log(  $(this).find('h2').css({'background-color':'#4e5a59'}));
 
 
                 var IDs = [];
                 $("#droppable-items").find("button").each(function(){ IDs.push(this.id); });
-                console.log(IDs);
+            //    console.log(IDs);
 
                 for (i = 0; i < IDs.length; i++) {
                     $('#'+IDs[i]).draggable({ disabled: true });
@@ -356,6 +390,7 @@ $(function(){
                     $('#'+IDs[i]).css({ "pointer-events": "none"});
 
                 }
+                nextSentence(IDs);
             }
         });
 
@@ -378,17 +413,18 @@ $(function(){
                 $(this).find("h2").css("background-color", "");
             },
             drop: function(evt, ui) {
-                $(this).css({'background-color':'rgb(5, 107, 98)'});
+             //   $(this).css({'background-color':'rgb(5, 107, 98)'});
                 $(this).find('h2').css({'color':'#fff'});
                 $(this).append($(ui.draggable).clone());
-                $()
+                 // display Comment success
+            displayCommentSuccess();
 
-                console.log(  $(this).find('h2').css({'background-color':'#4e5a59'}));
+           //     $(this).find('h2').css({'background-color':'#4e5a59'});
 
 
                 var IDs = [];
                 $("#droppable-items").find("button").each(function(){ IDs.push(this.id); });
-                console.log(IDs);
+              //  console.log(IDs);
 
                 for (i = 0; i < IDs.length; i++) {
                     $('#'+IDs[i]).draggable({ disabled: true });
@@ -397,6 +433,7 @@ $(function(){
                     $('#'+IDs[i]).css({ "pointer-events": "none"});
 
                 }
+                 nextSentence(IDs);
             }
         });
 
@@ -408,29 +445,66 @@ $(function(){
     function createButtons(){
         
                
-        
+        var hyphwords;
         var question = $('.drag-Question').text();
         
         words= question.match(/\b(\w+)\b/g);
+        hyphwords = question.match(/\b(\w+[-']\w+)\b/g);
+        
         var input="";
         for (i = 0; i < words.length; i++) {
           var  butn = '<button type="button" id="word-' + i + '" class="btn btn-default">' + words[i] + '</button>';
             input= input+butn;
+            
         }
         $("#butns-area").append(input);
+        $("#butns-area").find("button").each(function(){
+            //console.log(this.id);
+        
+          //  console.log($(this).text());
+            
+            if($.inArray(($(this).text()), disabledWords) != -1) {
+             //   console.log($(this).text());
+               // console.log($(this).attr("id").draggable);
+                var cid = this.id;
+                
+                $('#' + cid).draggable({ disabled: true });
+                $('#'+ cid).css({'color':'rgba(153, 153, 153, 0.6)'});
+                $('#'+ cid).css({"background-color":"#fff"});
+                $('#'+ cid).css({ "pointer-events": "none"});
+            }
+            
+            else{
+                iniIDs.push(this.id);
+            }
+        
+        });
+        
         dragWords();
     }
 
     
     function sentenceRequest(){
         
+        sentNum = sentNum + sentCounter;
         var xmlhttp = new XMLHttpRequest();
 
         xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
                 myObj = JSON.parse(this.responseText);
               //  var name = "1";
-                sentencename = myObj.Set21.Sentence;
+               
+            
+                var msg = myObj[sentNum];
+                $.each(msg, function(k, v) {
+                     if(v===""){
+                         
+                        disabledWords.push(k);     
+                        
+                       //do actions
+                     }
+                });
+                sentencename = myObj[sentNum]['Sentence'];
                 $('.drag-Question').text(sentencename);
                 
                 createButtons();        
@@ -453,7 +527,7 @@ $(function(){
               
                 var qcheck = checkd.text();
             
-                checkWord = myObj['Set21'][qcheck];
+                checkWord = myObj[sentNum][qcheck];
                 
                
                 
@@ -470,18 +544,25 @@ $(function(){
     
     function cuiRequest(cuiElement){
         
+        
         var xmlhttp = new XMLHttpRequest();
         
         xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
                 myObj = JSON.parse(this.responseText);
-              
-                var qcheck = checkd.text();
-            
-                checkWord = myObj['Set21'][qcheck];
                 
-               
+          //  console.log(checkWord);
+                var qcheck = cuiElement;
                 
+            //   console.log(cuiElement);
+               checkError = myObj[checkWord][qcheck];
+              //  console.log(checkError);
+                
+                
+                    $('#comment-section').removeClass('comment-success');
+                    $('#comment-section').css({"opacity":"1"});
+                    $('#comment-section').addClass('comment-sec');
+                    $('#comment-section').text(checkError);
         }
             
             
@@ -489,15 +570,51 @@ $(function(){
         xmlhttp.open("GET", "cuiheirarchy.php", true);
         xmlhttp.send();
        
-        return checkWord;
+        
+        
+    }
+    
+    function confirmationRequest(){
+        
+        
+        var xmlhttp = new XMLHttpRequest();
+        
+        xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+                myObj = JSON.parse(this.responseText);
+                
+            
+                checkSuccess = myObj[checkWord];
+                $('#comment-section').removeClass('comment-sec');
+                 $('#comment-section').addClass('comment-success');
+                 $('#comment-section').css({"opacity":"1"});
+                 $('#comment-section').text(checkSuccess);
+        }
+            
+            
+        };
+        xmlhttp.open("GET", "statements.php", true);
+        xmlhttp.send();
+       
+        
+        
     }
     // function to display comments
- function displayCommentSuccess(){
-     $('#comment-section').removeClass('comment-sec');
-     $('#comment-section').addClass('comment-success');
-     $('#comment-section').text('Success');
-     $('#comment-section').css({"opacity":"1"});
+    function displayCommentSuccess(){
+     
+     confirmationRequest();
+     
+     
+     
  }
+    
+    function nextSentence(getIds){
+        
+        if(iniIDs.length == getIds.length){
+            $('#nextBtn').toggle();
+                
+        }
+    }
 
 
     // Dialog box for comments

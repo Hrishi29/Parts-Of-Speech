@@ -1,7 +1,32 @@
 {
-   
+    "Set11":{
+        "Sentence":"I know but I am gonna close the little ones up",
+        "I":"Subjective Pronoun",
+        "know":"Main Verb",
+        "but":"Conjunction",
+        "am":"Auxiliary Verb",
+        "gonna":"Main Verb",
+        "close":"Secondary Verb",
+        "the":"",
+        "little":"",
+        "ones":"",
+        "up":""
+   },
+    
+    "Set12":{
+        "Sentence":"Why do you keep on crashing trains?",
+        "Why":"",
+        "do":"Auxiliary Verb",
+        "you":"Subjective Pronoun",
+        "keep":"Main Verb",
+        "on":"Preposition",
+        "crashing":"Secondary Verb",
+        "trains":""
+        
+    },
+    
     "Set21": {
-        "Sentence":"I kicked my foot into that chair over there and hurt my toe.",
+        "Sentence":"I kicked my foot into that chair over there and hurt my toe",
         "I":"Subjective Pronoun",
         "kicked":"Main Verb",
         "my":"Possessive Pronoun",
@@ -10,18 +35,31 @@
         "that":"",
         "chair":"",
         "over":"Preposition",
-        "and":"Conjunction"
+        "there":"",
+        "and":"Conjunction",
+        "hurt":"Main Verb",
+        "toe":""
     },
     
     "Set22": {
-        "Sentence":"I like to-go out to the amusement park when we are at Myrtle Beach or Nags Head.",
+        "Sentence":"I like to-go out to the amusement park when we are at Myrtle Beach or Nags Head",
         "I":"Subjective Pronoun",
         "like":"Main Verb",
         "to":"Preposition",
-        "to go":"Secondary Verb",
+        "to-go":"Secondary Verb",
         "we":"Subjective Pronoun",
         "are":"Main Verb",
-        "or":"Conjunction"
+        "or":"Conjunction",
+        "out":"",
+        "the":"",
+        "amusement":"",
+        "park":"",
+        "when":"",
+        "at":"",
+        "Myrtle":"",
+        "Beach":"",
+        "Nags":"",
+        "Head":""
     },
     
     "Set23": {
