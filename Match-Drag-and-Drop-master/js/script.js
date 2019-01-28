@@ -11,7 +11,7 @@ $(function(){
     var sentNum = 'Set';
     var sentCounter = 21;
     
-  //  $("#myModal").modal({keyboard: false});
+    $("#myModal").modal({keyboard: false});
     $("#modalButton").click(function(){
         
         if (($("#usrname").val()) != "")
