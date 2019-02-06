@@ -11,7 +11,7 @@ $(function(){
     var sentNum = 'Set';
     var sentCounter = 21;
     
-    $("#myModal").modal({keyboard: false});
+  //  $("#myModal").modal({keyboard: false});
     $("#modalButton").click(function(){
         
         if (($("#usrname").val()) != "")
@@ -444,13 +444,28 @@ $(function(){
   // Create buttons
     function createButtons(){
         
-               
+        var cid;
+        var singlebtn;
+        var singleids;
+        var maxpts;
         var hyphwords;
-        var question = $('.drag-Question').text();
-        
-        words= question.match(/\b(\w+)\b/g);
-        hyphwords = question.match(/\b(\w+[-']\w+)\b/g);
-        
+        var question = $('.drag-Question').text(); // Retrieving Sentence
+        var newquestion = question.replace(/-/g, ""); // check if sentence has any Secondary verb and then joining those words as one word to store in the array
+        words = newquestion.match(/\b(\w+)\b/g); // fetching all individual words and storing in an array
+         // words containing hyphens
+        hyphwords = question.match(/\b(\w+[-']\w+)\b/g); // fetch only those words which are secondary verbs(hyphen)
+        if(hyphwords != null){
+            
+            $('.drag-Question').text(question.replace(/-/g, " "));
+                
+            for (i = 0; i < hyphwords.length; i++) {
+                var str = hyphwords[i];
+                var newstr = str.replace(/-/g, "");
+                words[(words.indexOf(newstr))] = str.replace(/-/g, " ") ;
+            }
+        }
+     //   console.log(words);
+      //  console.log(disabledWords);
         var input="";
         for (i = 0; i < words.length; i++) {
           var  butn = '<button type="button" id="word-' + i + '" class="btn btn-default">' + words[i] + '</button>';
@@ -458,31 +473,86 @@ $(function(){
             
         }
         $("#butns-area").append(input);
-        $("#butns-area").find("button").each(function(){
-            //console.log(this.id);
         
+        $("#butns-area").find("button").each(function(){ //fetching each button and then checking for disabled words or marking disabled words
+            //console.log(this.id);
+            singlebtn = $(this).text();
+            singleids = this.id;
           //  console.log($(this).text());
             
             if($.inArray(($(this).text()), disabledWords) != -1) {
              //   console.log($(this).text());
                // console.log($(this).attr("id").draggable);
-                var cid = this.id;
                 
+                maxpts = 0;
+                cid = this.id;
+             //   disabledids.push(cid);
                 $('#' + cid).draggable({ disabled: true });
                 $('#'+ cid).css({'color':'rgba(153, 153, 153, 0.6)'});
                 $('#'+ cid).css({"background-color":"#fff"});
                 $('#'+ cid).css({ "pointer-events": "none"});
+                
+                
+
+                    
             }
             
             else{
                 iniIDs.push(this.id);
+                maxpts = 3;
             }
+            
+          
+          //  console.log(disabledids);
+          //  console.log(iniIDs);
         
-        });
         
         dragWords();
-    }
+        iniBtnInsert(singlebtn, maxpts, singleids);
+     
+        
+    });
 
+    function iniBtnInsert(singlebtn, maxpts, singleids){    
+           
+        $.ajax({
+
+                        //AJAX type is "Post".
+
+                        type: "POST",
+
+                        //Data will be sent to "ajax.php".
+
+                        url: "ButtonInsert.php",
+
+
+
+                        //Data, that will be sent to "ajax.php".
+
+                        data: {
+
+                            //Assigning value of "name" into "search" variable.
+
+
+                            BtnsInsert: singlebtn,
+                            Maxpossiblepts: maxpts,
+                            WordIds: singleids,
+                            Qnum: sentNum,
+                            
+                        },
+
+                        success: function(data) {
+
+
+                            console.log(data);
+
+                        }
+
+                    });
+            
+        }
+        
+    }
     
     function sentenceRequest(){
         
