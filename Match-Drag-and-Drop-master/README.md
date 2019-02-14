@@ -10,4 +10,4 @@ jQuery UI, jQuery, JavaScript, Bootstrap, CSS.
 
 
  ## Image 
-![alt text](resources/images-git/11_1.PNG)
+![alt text](resources/images-git/11_1.png)
