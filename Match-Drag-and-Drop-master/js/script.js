@@ -84,7 +84,7 @@ $(function(){
         accept: function(d) {
            var returnreq =  matchRequest(d);
             if ('Subjective Pronoun' != returnreq){
-               // console.log(returnreq)
+                
                 return false;
             }
             else { return true;}
@@ -508,7 +508,7 @@ $(function(){
         
         
         dragWords();
-        iniBtnInsert(singlebtn, maxpts, singleids);
+       // iniBtnInsert(singlebtn, maxpts, singleids);
      
         
     });

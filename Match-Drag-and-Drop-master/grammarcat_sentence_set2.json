@@ -63,12 +63,14 @@
     },
     
     "Set23": {
-        "Sentence":"I am not finished with my farm.",
+        "Sentence":"I am not finished with my farm",
         "I":"Subjective Pronoun",
         "am":"Auxiliary Verb",
-        "fininshed":"Main Verb",
+        "finished":"Main Verb",
         "with":"Preposition",
-        "my":"Possessive Pronoun"
+        "my":"Possessive Pronoun",
+        "not":"",
+        "farm":""
     },
     
     "Set24": {
@@ -78,7 +80,97 @@
         "finish":"Main Verb",
         "our":"Possessive Pronoun",
         "can":"Auxiliary Verb",
-        "play":"Main Verb"
-    }
+        "play":"Main Verb",
+        "game":"",
+        "castle":"",
+        "a":""
+        
+    },
     
+        
+    "Set25": {
+        "Sentence":"You can get the rest of the blocks that are in there",
+        "You":"Subjective Pronoun",
+        "can":"Auxiliary Verb",
+        "get":"Main Verb",
+        "the":"",
+        "rest":"",
+        "of":"Preposition",
+        "blocks":"",
+        "that":"Conjunction",
+        "are":"Main Verb",
+        "in":"",
+        "there":""
+        
+    },
+    
+    "Set26":{
+        "Sentence":"I will help you pick up yours",
+        "I":"Subjective Pronoun",
+        "will":"Auxiliary Verb",
+        "help":"Main Verb",
+        "you":"Objective Pronoun",
+        "pick":"Main Verb",
+        "up":"",
+        "yours":"Possessive Pronoun"
+    },
+    
+    "Set29":{
+        "Sentence":"Lets go-find the game that I want to-play",
+        "Let":"Main Verb",
+        "go find":"Secondary Verb",
+        "the":"",
+        "game":"",
+        "that":"Conjunction",
+        "I":"Subjective Pronoun",
+        "want":"Main Verb",
+        "to play":"Secondary Verb"
+        
+    },
+    
+    "Set28":{
+        "Sentence":"The dog and the cat are trying to-hit him on the head",  
+        "The":"",
+        "dog":"",
+        "and":"Conjunction",
+        "the":"",
+        "cat":"",
+        "are":"Auxiliary Verb",
+        "trying":"Main Verb",
+        "to hit":"Secondary Verb",
+        "him":"Objective Pronoun",
+        "on":"Preposition",
+        "head":""
+    },
+    
+    "Set27":{
+        "Sentence":"I mean, you should make this one open his mouth",
+        "I":"Subjective Pronoun",
+        "mean":"Main Verb",
+        "you":"Objective Pronoun",
+        "should":"Auxiliary Verb",
+        "make":"Main Verb",
+        "this":"",
+        "one":"",
+        "open":"Main Verb",
+        "his":"Possessive Pronoun",
+        "mouth":""
+        
+    },
+    
+    "Sentence210":{
+        "Sentence":"That is for when we are making a plane or something",
+        "That":"Conjunction",
+        "is":"Main Verb",
+        "for":"Preposition",
+        "when":"",
+        "we":"Subjective Pronoun",
+        "are":"",
+        "making":"Main Verb",
+        "a":"",
+        "plane":"",
+        "or":"Conjunction",
+        "something":""
+
+    }
  }
