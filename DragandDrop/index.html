@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Match</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Kalam" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">    <!--Custom CSS-->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <!--<link rel="shortcut icon " type="image/png" href="images/fav1.png">-->
+    <script src="js/prefixfree.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Jquery UI-->
+    <link rel="stylesheet" href="resources/jquery-ui-1.12.1/jquery-ui.css"/>
+
+</head>
+
+<body>
+
+<header>
+    <nav class="navbar navbar-default navbar-fixed-top" id="header-nav">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="./"><i class="far fa-lightbulb fa-3x" style="color:#ff4f5c" aria-hidden="true"></i><span  class="icon-logo-title">Match</span></a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                       <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Sentences
+                            <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                              <li><a href="#">Set 1</a></li>
+                              <li><a href="#">Set 2</a></li>
+                              <li><a href="#">Set 3</a></li>
+                            </ul>
+                          </li>
+                    <li><a href="#reviewModal" data-toggle="modal">Review</a></li>      
+                    <li><a  href="https://www.slideshare.net/secret/lrm4MwobTs3EFb" target="_blank">Resources</a></li>
+                    <li><a id="userName" href="#"></a></li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+        
+    </nav>  <!--header navbar-->
+</header>
+
+ <!-- Modal -->
+  <div class="modal fade" data-backdrop="static" id="myModal" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          
+          <h4 class="modal-title">Welcome to GrammarCat</h4>
+        </div>
+        <div class="modal-body">
+            <p>Test your Parts of Speech skills with the GrammarCat Application</p>
+            <p>Please Enter Your Name Below</p>
+          <form class="idform" role="form">
+            <div class="form-group">
+              <input type="text" class="form-control" id="usrname" placeholder="Enter name" required/>
+            </div>
+              <button type="button" id="modalButton" class="btn btn-success btn-sm">Submit</button>
+        </form>
+        </div>
+
+      </div>
+      
+    </div>
+  </div>    
+
+        <!-- Instructions Modal -->
+        <div class="modal" id="insModal" role="dialog">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h2 class="modal-title w3-myfont" style="text-align: center">Welcome to GrammarCat</h2>
+                    </div>
+                    <div class="modal-body">
+                        <div class="w3-container">
+                            <ul class="a">
+                                <li>The application is a quiz which will contain a set of questions and each question will contain certain words for which you have to identify the parts of speech by dragging and 
+                                        dropping those words into their respective boxes</li>
+                                    <li>Each identifyable word is worth 3 points. The maximum points that could be scored for each sentence will be displayed on the screen. </li>
+                                    <li>You will have 3 attempts to identify the parts of speech for each word and for every incorrect attempt 1 point would be deducted from the maximum score. However after the 
+                                       third attempt you won't lose a point as the answer would be displayed on the screen via hint. At the end of each sentence you would have correctly identified the parts of 
+                                       speech for all the words in the sentence.
+                                    <br><i>Note: For every incorrect attempt a hint will be displayed to correctly identify the parts of speech for the given word</i>.</li>        
+                                    <li>You cannot go to the next sentence until you have identified all the words for the given sentence. However you can review the previously attempted sentences and check for the 
+                                        scores for reference.</li>
+                                    <li>Once you start the quiz, it will be available for the next <b>7 days</b> only.</li>
+                            </ul>        
+                        </div>
+                    </div>
+                    <div class="modal-footer container-fluid">
+                        <div class="row">
+                            <div class="col-sm-12 text-center">    
+                                <button id="beginSet" class="w3-btn w3-blue w3-round-xxlarge w3-large w3-padding-large w3-card-4">Begin</button>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+    
+  <!-- Review Modal -->
+  <div class="modal" id="reviewModal" role="dialog">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title" style="text-align: center">Question Set 2</h4>
+            </div>
+            <div class="modal-body">
+                <div class="w3-container">
+                        <div id="appBtn">
+                    
+                        </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>   
+
+<div class="container-fluid" id="main-body">
+     <div class="row" id="section-drag">
+         <div class="col-sm-12 dragarea">
+             <div id="draggble-items">
+                    <div class="row"><div class="text-left col-sm-5 qno"><span class="w3-tag w3-padding w3-large w3-red w3-center">Question No: <span id="tagNum"></span></span></div><div  class="drag-Question col-sm-7"></div></div>
+                 <div><div class="text-center" id="butns-area"></div>
+                 </div>
+             </div>
+             <div id="comment-section" class="col-sm-12">
+                 
+             </div>
+             
+             <div id="nextBtn">
+                 
+                 <button type="button"  class="btn btn-primary">Next  <span class="glyphicon glyphicon-arrow-right"></span> </button>
+             </div>
+             </div>
+         </div>
+     </div>
+
+
+    <!--Draggble items-->
+    <div class="row" id="section-drop">
+        <div class="col-sm-12 text-center"><span id="scoreText">Maximum points that could be scored: </span><span id="scoreLabel" class="label label-primary"></span></div>
+        <div id="droppable-items">
+            <div class="col-sm-3">
+                <div id="Subjective-Pronoun" class="target-subjective drop-panel">
+                  <h2>Subjective Pronoun</h2>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div id="Objective-Pronoun" class="target-objective drop-panel">
+                    <h2>Objective Pronoun</h2>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div id="Possessive-Pronoun" class="target-possessive drop-panel">
+                    <h2>Possessive Pronoun</h2>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div id="Main-Verb" class="target-main drop-panel">
+                    <h2>Main Verb</h2>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div id="Auxiliary-Verb" class="target-aux drop-panel">
+                    <h2>Auxiliary Verb</h2>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div id="Secondary-Verb" class="target-second drop-panel">
+                    <h2>Secondary Verb</h2>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div id="Preposition" class="target-prep drop-panel">
+                    <h2>Preposition</h2>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div id="Conjunction" class="target-con drop-panel">
+                    <h2>Conjunction</h2>
+                </div>
+            </div>
+        </div>
+
+        <!--diallog box-->
+        <!--<div id="dialog-message">-->
+            <!--<p>Please try once again</p>-->
+        <!--</div>-->
+
+    </div>
+    <!--Droppable items-->
+
+
+     <!--Container-->
+
+<!--footer-->
+<footer>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12 footer-content">
+                &copy; 2018
+            </div>
+        </div>
+
+    </div>
+</footer>
+
+<!--Jquery UI-->
+<script type="text/javascript" src="resources/jquery-ui-1.12.1/external/jquery/jquery.js"></script>
+<script type="text/javascript" src="resources/jquery-ui-1.12.1/jquery-ui.js"></script>
+<!--Bootstrap-->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!--Custom JS-->
+<script src="js/script.js"></script>
+
+</body> <!--body-->
+</html>

@@ -1,0 +1,333 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800|Roboto+Slab:400,100,300,700);
+
+/**  Basic Page CSS **/
+body{
+    font-family: "Roboto Slab", sans-serif;
+    font-weight: 300;
+    font-size: 2em;
+    position: relative;
+    background-color:#f0f1f6!important;
+    height: 100%;
+}
+
+
+
+/*Header Nav*/
+
+#header-nav{
+    min-height: 80px;
+    background-color: #fff !important;
+    z-index: 1000;
+    margin-bottom: 10px;
+    box-shadow: 0 8px 6px -6px #999;
+}
+
+header .icon-logo-title{
+    font-size: 26px;
+    color:#112e60;
+    font-family:'Kalam', cursive;
+    padding-left: 10px;
+    padding-top: 25px;
+    position: absolute;
+}
+
+header .navbar-brand{
+    display: block;
+    min-height: 80px;
+    position: relative;
+}
+
+header .navbar-right {
+    padding-top: 15px;
+    font-size: 0.8em;
+}
+
+header .navbar-default {
+    border: none;
+}
+
+/*body*/
+
+ul.a {
+    list-style-type: disc;
+  }
+
+
+  li{
+      padding-bottom: 5px;
+      font-size: 1.2em;
+      font-family: 'Adamina';
+  }
+
+  .w3-myfont {
+      font-family: "Comic Sans MS", cursive, sans-serif;
+  }
+
+
+.modal {
+  text-align: center;
+}
+
+#nextBtn {
+    
+    text-align:center;
+    margin-bottom: 10px;
+    display: none;
+}
+
+@media screen and (min-width: 768px) { 
+  .modal:before {
+    display: inline-block;
+    vertical-align: middle;
+    content: " ";
+    height: 100%;
+  }
+}
+
+@media screen and (max-width: 1100px) { 
+    
+    .drag-Question {
+        width: 100%;
+        text-align: center;
+    }
+
+    .qno {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+  }
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
+
+#main-body{
+    margin-top:90px;
+}
+
+
+#draggble-items{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    /*width: 1000px;*/
+    /*height: 200px;*/
+    /*background-color: #60679436;*/
+    /*border-radius: 4px;*/
+    /*padding: 5pt 5pt 5pt 5pt;*/
+    /*margin: 10pt;*/
+
+    /*overflow: hidden*/
+}
+
+.dragarea{
+    background-color: #fff;
+    /*position: absolute;*/
+    /*height: 100%;*/
+    border-radius: 6px;
+    min-height:200px;
+}
+
+#theDiv {
+    width: 200px;
+    height: 150px;
+    background-color: #587e8c;
+    padding: 5pt 5pt 5pt 5pt;
+    margin: 10pt;
+    /*overflow: hidden*/
+}
+.drop-panel h2 {
+    background-color: #1b8d8426;
+    font-size: 16px;
+    text-align: center;
+    padding:5px;
+    color:black;
+}
+.drop-panel {
+    /*width: 400px;*/
+    min-height: 300px;
+    /*overflow: hidden*/
+  padding-bottom: 10px;
+}
+.target-subjective {
+    background-color: #FB6868;
+}
+.target-objective {
+    background-color: #FA765A;
+}
+.target-possessive {
+    background-color: #F7E975;
+}
+.target-main {
+    background-color: #8FD8D2;
+}
+.target-aux {
+    background-color: #6CA0F4;
+}
+.target-second {
+    background-color: #EB9DFA;
+}
+.target-prep {
+    background-color: #9C95F6;
+}
+.target-con {
+    background-color: #FE77BE;
+}
+.highlight {
+    background-color: yellow;
+}
+
+/* First section */
+.drag-Question{
+    
+    font-size: 0.7em;
+    font-weight: 500;
+    color:#3333338f;
+    padding-bottom: 10px;
+    
+}
+
+#draggble-items button{
+    box-shadow: 0 15px 33px #09123d7a;
+    /*border-style: dashed;*/
+    font-size: 1.2em;
+    border-radius: 14px;
+    /*border-color: #ff6500;*/
+    /*border-width: 2px;*/
+
+}
+
+.btn-default.active, .btn-default:active, .open>.dropdown-toggle.btn-default,.btn-default.focus, .btn-default:focus  {
+    background-color: #fff;
+    border-color: #ff6500;
+}
+
+#draggble-items button:hover{
+    background-color: #f4511e;
+    border-color: #ff6500;
+    /*padding: 12px 27px;*/
+    /*margin: 8px;*/
+    transform:scale(1.2,1.2);
+    /*transition-timing-function: all .2s ease;*/
+}
+
+#draggble-items .btn:hover {
+    color: #fff;
+}
+
+#draggble-items .btn:focus {
+    outline-width: 0;
+
+}
+
+
+#draggble-items .btn {
+   color: #da4010bd;
+    margin: 2px;
+    z-index: 100;
+
+}
+
+#section-drag{
+    position: relative;
+    min-height: 200px;
+    margin: 2px 30px 30px 30px;
+}
+
+/*Drop Section CSS*/
+
+#droppable-items{
+    margin: 30px;
+}
+
+#droppable-items button{
+    /*box-shadow: 0 15px 33px #fff;*/
+    /*border-style: dashed;*/
+    font-size: 1.2em;
+    border-radius: 14px;
+    color: #da4010bd;
+    margin: 4px;
+    outline-width: 0;
+    display: block;
+}
+
+
+
+/*Footer*/
+
+footer{
+    margin-top: 30px;
+}
+footer .footer-content{
+    text-align: center;
+    color: black;
+    font-size: 0.7em;
+}
+
+footer .row{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background: #464f5873;
+
+}
+
+/*!*Ui dialog*!*/
+/*.text-box {*/
+    /*!*these two lines do the magic *!*/
+    /*color: transparent;*/
+    /*text-shadow: 0px 0px 1px #000000;*/
+/*}*/
+
+/*.blur {*/
+    /*text-shadow: 0px 0px 10px #000000;*/
+/*}*/
+/*!*.err-dlg {*!*/
+    /*!*font-size: 1.5em;*!*/
+    /*!*text-align: center*!*/
+/*!*}*!*/
+/*.ui-dialog .ui-dialog-titlebar {*/
+    /*display: none*/
+/*}*/
+/*.ui-corner-all {*/
+    /*border: 2px solid rgb(0, 0, 0);*/
+    /*border-radius: 5px*/
+
+/*}*/
+/*.ui-dialog .ui-dialog-content {*/
+    /*padding-top: 40px*/
+/*}*/
+
+/*.closeButton{*/
+    /*width:100%;*/
+    /*padding:0;*/
+    /*color:#33333394;*/
+    /*outline-width: 0;*/
+/*}*/
+
+/*#dialog-message p{*/
+    /*!*text-align: center;*!*/
+    /*color:#33333394;*/
+/*}*/
+
+
+/*comment section*/
+#comment-section{
+    opacity:0;
+    margin-bottom: 10px;
+}
+
+.comment-sec{
+    text-align: center;
+    font-size: 0.9em;
+    color: red;
+    font-weight: 500;
+}
+
+.comment-success{
+    text-align: center;
+    font-size: 1em;
+    color: green;
+    font-weight: 500;
+}

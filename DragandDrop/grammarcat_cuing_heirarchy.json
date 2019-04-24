@@ -1,0 +1,51 @@
+{
+   
+    "Subjective Pronoun": {
+         "1":"Ooopps!! Please try again. Remember: this part of speech replaces a person or object",
+         "2":"Good try. Please try again. Remember: try using the “HE” rule",
+         "3":"Looks like you could use some help: this is a pronoun – it is subjective because it serves as the subject of the verb"
+},
+    
+    "Objective Pronoun": {
+         "1":"Ooooppps!! Please try again. Remember: this part of speech replaces a person or object",
+         "2":"Good try. Please try again. Remember: using the “HE” rule might help",
+         "3":"Looks like you could use some help: this is a pronoun – it is objective because it serves as the object of the verb"
+    },
+    
+     "Possessive Pronoun": {
+         "1":"Ooooppps!! Please try again. Remember: this part of speech replaces a person or object",
+         "2":"Good try. Please try again. Remember: using the “HE” rule might help",
+         "3":"Looks like you could use some help: this is a pronoun – it is possessive because it communicates ownership"
+},
+    
+     "Auxiliary Verb": {
+         "1":"Oooppss!!! Please try again. Remember: this is an action word",
+         "2":"Good try. Please try again. Remember: this is a helping word and cannot stand alone",
+         "3":"Looks like you could use some help: this is an auxiliary verb – it is part of the verb phrase. Auxiliary verbs include: forms of to be, have, do, and modals. Also, get in the passive voice"
+},
+    
+     "Main Verb": {
+         "1":"Ooooopss!! Please try again. Remember: this is an action word",
+         "2":"Good try. Pease try again. Remember: this part of speech communicates the existence or an action",
+         "3":"Looks like you could use some help: this is a main verb – it is part of the verb phrase. Main verbs can be conjugated and include copulas"
+},
+    
+     "Secondary Verb": {
+         "1":"Oooppss!! Please try again. Remember: this is a form of a verb",
+         "2":"Good try. Please try again. Remember: this part of speech has three subtypes",
+         "3":"Looks like you could use some help: this is a secondary verb – it is either a marked/unmarked infinitive, gerund, or participle. Gerunds serve as nouns and participles serve as adjectives"
+     },
+    
+     "Conjunction": {
+         "1":"Oooopss!! Please try again. Remember: this part of speech serves as a connector",
+         "2":"Good try. Please try again. Remember: this part of speech links sentences, clauses, phrases, or other words",
+         "3":"Looks like you could use some help: this is a conjunction. There are three types of conjunctions: coordinating, subordinating, correlative"
+     },
+    
+     "Preposition": {
+         "1":"Oooopss!! Please try again. Remember: this part of speech serves as a connector",
+         "2":"Good try. Please try again. Remember: this part of speech introduces phrases not clauses",
+         "3":"Looks like you could use some help: this is a preposition. There are several prepositions and they link nouns, pronouns, or groups of words serving as a noun to other parts of the sentence"
+         
+     }
+ }
