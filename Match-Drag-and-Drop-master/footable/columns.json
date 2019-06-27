@@ -1,6 +1,0 @@
-[
-    {"name":"ID","title":"ID","visible":false,"filterable":false},
-    {"name":"Name","title":"Name"},
-    {"name":"QuestionSet","title":"QuestionSet"},
-    {"name":"Date","title":"Date"}
-]
