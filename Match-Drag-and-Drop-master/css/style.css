@@ -48,6 +48,22 @@ header .navbar-default {
 
 /*body*/
 
+ul.a {
+    list-style-type: disc;
+  }
+
+
+  li{
+      padding-bottom: 5px;
+      font-size: 1.2em;
+      font-family: 'Adamina';
+  }
+
+  .w3-myfont {
+      font-family: "Comic Sans MS", cursive, sans-serif;
+  }
+
+
 .modal {
   text-align: center;
 }
@@ -68,6 +84,20 @@ header .navbar-default {
   }
 }
 
+@media screen and (max-width: 1100px) { 
+    
+    .drag-Question {
+        width: 100%;
+        text-align: center;
+    }
+
+    .qno {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+  }
 .modal-dialog {
   display: inline-block;
   text-align: left;
@@ -151,11 +181,12 @@ header .navbar-default {
 
 /* First section */
 .drag-Question{
-    text-align: center;
+    
     font-size: 0.7em;
     font-weight: 500;
     color:#3333338f;
     padding-bottom: 10px;
+    
 }
 
 #draggble-items button{

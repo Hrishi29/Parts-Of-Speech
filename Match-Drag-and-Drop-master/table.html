@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html>
+<head><title>Table</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.7/css/mdb.min.css" rel="stylesheet">
+<link href="mdb/css/addons/datatables.min.css" rel="stylesheet">
+<style>
+table.dataTable thead .sorting:after,
+table.dataTable thead .sorting:before,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_asc:before,
+table.dataTable thead .sorting_asc_disabled:after,
+table.dataTable thead .sorting_asc_disabled:before,
+table.dataTable thead .sorting_desc:after,
+table.dataTable thead .sorting_desc:before,
+table.dataTable thead .sorting_desc_disabled:after,
+table.dataTable thead .sorting_desc_disabled:before {
+bottom: .5em;
+}
+
+.pageForm {
+
+    margin: 3px 0 0 0;
+}
+
+.btn-group .btn {
+    margin: 0 5px 0 0;
+}
+
+.custom-select, .inputSMEx{
+    border: 0;
+    border-bottom: 1px solid #ced4da;
+}
+#selectSet{
+    font-weight: 400;
+}
+
+.card-header-title{
+
+    color:white;
+}
+.mainBody{
+
+    background-color: #eff0f1;
+    
+}
+.setLabel{
+    font-weight: 300;
+    font-size: 0.8rem;
+    color: #757575;
+    margin-top: -1.2rem;
+}
+
+.setQ{
+    margin-top: 0.4rem;
+}
+
+.htmlHide{
+
+    display: none;
+}
+</style>
+
+</head>
+
+<body>
+
+<!--Modal: modalConfirmDelete-->
+<div class="modal fade" id="modalConfirmDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-sm modal-notify modal-danger modal-dialog-centered" role="document">
+    <!--Content-->
+    <div class="modal-content text-center">
+      <!--Header-->
+      <div class="modal-header d-flex justify-content-center">
+        <p class="heading">Are you sure?</p>
+      </div>
+
+      <!--Body-->
+      <div class="modal-body">
+
+        <i class="fas fa-times fa-4x animated rotateIn"></i>
+
+      </div>
+
+      <!--Footer-->
+      <div class="modal-footer flex-center">
+        <a type="button" class="btn  btn-outline-danger btnYes">Yes</a>
+        <a type="button" class="btn  btn-danger waves-effect" data-dismiss="modal">No</a>
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+<!--Modal: modalConfirmDelete-->   
+
+<!-- Outer Container Starts--> 
+<div class="container mt-4">
+    <!-- Card for Outer Container Starts -->
+    <div class="card">
+        <!-- Outer Container Card Header Starts-->
+        <div class="card card-header blue-gradient view overlay"><h2 class="card-header-title"><strong>GrammarCat Admin Portal</strong></h2>
+            <a href="#!">
+                <div class="mask rgba-white-slight"></div>
+            </a>
+        </div>
+        <!-- Outer Container Card Header Ends-->
+
+        <!-- Outer Container Card Body Starts-->
+        <div class="card-body mainBody">
+            <!-- Div before submission Starts -->
+            <div class="row contentRow">
+                <div class="col-sm-2"></div>
+                    <div class="col-sm-8">
+                        <!-- Login Container Card 1 Starts-->
+                        <div class="card mb-3 loginCard">
+                                <div class="card card-header blue-gradient view overlay text-center">
+                                        <div class="card-header-title mb-n2"><h4 class="card-title">Sign In</h4>
+                                            <a href="#!">
+                                                <div class="mask rgba-white-slight"></div>
+                                              </a>
+                                        </div>      
+                                </div>
+                                <!-- Login Container Card 1 Body Starts-->
+                                <div class="card-body">
+                                        <form class="initForm">
+
+                                                <div class="md-form">
+                                                    <input type="email" id="form1email" class="form-control" required>
+                                                    <label for="form1email">E-mail</label>
+                                                </div>
+                                                <div class="md-form">
+                                                    <input type="password" id="form1pass" class="form-control" required>
+                                                    <label for="form1pass">Password</label>
+                                                </div>
+
+                                                <div class="invalid-feedback">Invalid E-mail or Password</div>
+                                                <button class="btn btn-info btn-sm btnsign" type="submit">SIGN IN</button>
+                                    
+                                        </form>    
+                                </div>
+                                <!-- Login Container Card 1 Body Ends-->
+                            </div>
+                            <!-- Login Container Card 1 Ends-->
+                    </div>
+                <div class="col-sm-2"></div>                
+            </div>
+            <!-- Div before submission Ends -->
+             <!-- Div after submission Starts -->
+            <div class="htmlHide contentCard">   
+                    <!-- Inner Container Card 1 Starts-->
+                     <div class="card mb-3">
+                             <!-- Inner Container Card 1 Body Starts-->
+                             <div class="card-body">
+                                     <form>
+                                             <div class="form-row">
+                                               <div class="col-md-4 mb-3 md-form pageForm setQ">
+                                                 <div class="setLabel">Current QuestionSet</div>
+                                                 <select class="custom-select" id="validationDefault22"><option value="questionset1">QuestionSet 1</option><option value="questionset2">QuestionSet 2</option><option value="questionset3">QuestionSet 3</option></select>        
+                                               </div>
+                                               <div class="col-md-4 mb-3 md-form pageForm">
+                                                 <input type="date" class="form-control" id="validationDefault23">
+                                                 <label for="validationDefault23">Start Date</label>
+                                               </div>
+                                               <div class="col-md-4 mb-3 md-form pageForm">
+                                                 <input type="date" class="form-control" id="validationDefaultUsername22" aria-describedby="inputGroupPrepend23">
+                                                 <label for="validationDefaultUsername22">End Date</label>
+                                               </div>
+                                             </div>
+                                             <button class="btn btn-success btn-sm mt-n2 dateSave" type="button"><i class="fab fa fa-save fa-sm pr-2" aria-hidden="true"></i>Save</button>    
+                                     </form>        
+                             </div>
+                             <!-- Inner Container Card 1 Body Ends-->
+                         </div>
+                         <!-- Inner Container Card 1 Ends-->
+             
+                         <!-- Inner Container Card 2 Starts-->
+                         <div class="card">
+                             <!-- Inner Container Card 2 Header Starts-->    
+                             <div class="card card-header blue-gradient view overlay">
+                                     <div class="card-header-title mb-n2"><h4 class="card-title">Users List</h4>
+                                         <a href="#!">
+                                             <div class="mask rgba-white-slight"></div>
+                                           </a>
+                                     </div>      
+                             </div>
+                             <!-- Inner Container Card 2 Header Ends-->
+             
+                             <!-- Inner Container Card 2 Body Starts-->
+                             <div class="card-body">
+                                 <div class="container">
+                                     <div class="row">    
+                                         <p id="selectSet" class="prefix col-md-2 mt-1" >Filter by: </p>
+                                         <select class="custom-select custom-select-sm col-md-3" id="filterSet"><option value="All">All</option><option value="questionset1">QuestionSet 1</option><option value="questionset2">QuestionSet 2</option><option value="questionset3">QuestionSet 3</option>
+                                         </select>
+                                     </div>    
+                                 <!-- Table  -->
+                                 <table id="dtBasicExample" class="table" cellspacing="0" width="100%">
+                                         <thead>
+                                           <tr>
+                                 
+                                             <th class="th-sm">Name
+                                             </th>
+                                             <th class="th-sm">QuestionSet
+                                             </th>
+                                             <th class="th-sm">Date
+                                             </th>
+                                             <th class="th-sm">
+                                             </th>
+                                 
+                                           </tr>
+                                         </thead>
+                                         <tbody>
+                                           
+                                         </tbody>
+                                         <tfoot>
+                                           <tr>
+                                             <th>Name
+                                             </th>
+                                             <th>QuestionSet
+                                             </th>
+                                             <th>Date
+                                             </th>
+                                             <th>
+                                             </th>
+                                           </tr>
+                                         </tfoot>
+                                       </table>
+                                       <!-- Table  -->    
+                                 </div>
+             
+                             </div>
+                             <!-- Inner Container Card 2 Body Ends-->
+                         </div>
+                          <!-- Inner Container Card 2 Ends-->
+                 </div>
+                 <!-- Div after submission Ends -->                 
+        </div> 
+        <!-- Outer Container Card Body Ends-->
+    </div>
+    <!-- Card for Outer Container Ends -->
+</div>
+<!-- Outer Container Ends-->  
+
+
+
+
+<!-- Scripts -->
+<!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.7/js/mdb.min.js"></script>
+
+<script type="text/javascript" src="mdb/js/addons/datatables.min.js"></script>
+
+<script>
+        $(document).ready(function () {
+
+            var accessName;
+            // function to hide validation feedback
+            $(document).on("click", ".initForm", function(){
+                $(".invalid-feedback").hide(); 
+            });
+
+            //form validation
+            $(".initForm").submit(function(e) {
+                var usrText = $("#form1email").val();
+                var usrPass = $("#form1pass").val();
+                e.preventDefault(); 
+                $.ajax({
+                        type: "POST",
+                        url: "ButtonInsert.php",
+                        data: {
+                                AdminTxt: usrText,
+                                AdminPass: usrPass,
+
+                            },
+
+                        success: function(data) {
+                               if(data == "Unsuccess"){
+                                $(".invalid-feedback").show(); 
+                               }
+                               else {
+                                accessName = data;   
+                                $(".contentRow").addClass("htmlHide");
+                                $(".contentCard").removeClass("htmlHide");
+                                // function called after form submission
+                                submitCard();
+                               }
+
+                        }
+                    });  
+            });
+
+            function submitCard(){
+            card1load();
+            loadDataTable();
+            };
+            //function on dateSave
+            $(document).on("click",".dateSave", function(){
+                var startDateVal = $('#validationDefault23').val();
+                var endDateVal = $('#validationDefaultUsername22').val();
+                var liveSet = $('#validationDefault22').val();
+                $.ajax({
+                        type: "POST",
+                        url: "ButtonInsert.php",
+                        data: {
+                            UpdateStart: startDateVal,
+                            UpdateEnd: endDateVal,
+                            UpdateLive: liveSet,
+                            UpdateAdmin: accessName,
+                            },
+
+                        success: function(data) {
+                            console.log('dateSaveSuccess for admin');
+                        }
+                    });
+            });
+
+            //function on maindateSet change
+            $(document).on("change","#validationDefault22", function(){
+                var changeVal = $('#validationDefault22').val();
+                $.ajax({
+                        type: "POST",
+                        url: "ButtonInsert.php",
+                        data: {
+                                modifySets: changeVal,
+                                UpdateAdmin: accessName,
+                            },
+
+                        success: function(data) {
+                          //  console.log(data);
+                            var jsonObj3 = JSON.parse(data);
+                            $('#validationDefault23').val(jsonObj3['StartDate']);
+                            $('#validationDefaultUsername22').val(jsonObj3['EndDate']);
+                        }
+                    });
+            });
+
+            //function on filter
+            $(document).on("change","#filterSet", function(){
+                $('#dtBasicExample').dataTable().fnClearTable();
+                $('#dtBasicExample').dataTable().fnDestroy();
+                loadDataTable();
+            });
+               
+            
+            // function to load data in the table
+            function loadDataTable(){           
+                var filterValue = $("#filterSet").val();
+
+                $.ajax({
+
+
+
+                    type: "POST",
+
+                    url: "ButtonInsert.php",
+
+                    data: {
+                        QuestionnumSet: filterValue, 
+                    },
+
+                    success: function(data) {
+
+                            $('table tbody').empty();
+                            displayData(data, function(){
+                                getDatatable();
+                            });
+                            
+                        }
+
+                    });
+                }    
+            // fuction on edit 
+            $(document).on("click",".btnEdit", function(){
+            var dateObj = $(this).parents('td').prev();
+          //  var sibObj = $(this).parents('td').siblings().first(); 
+          //  var nameText = sibObj.text();
+            //populate input on edit for name
+        //    sibObj.html('<input type="text" value=""' + nameText + '"class="inputSMEx" class="form-control form-control-sm">');
+            
+            // populating dropdown on edit for date
+            if (dateObj.text() != 'NULL'){
+                
+                dateObj.html('<select class="custom-select custom-select-sm"><option value="' + dateObj.text() + '"selected>' + dateObj.text() + '</option><option value="NULL"><i>NULL</i></option></select>');
+            }
+
+            $(this).removeClass('btn-indigo btnEdit');
+            $(this).addClass('btn-success btnSave');
+            //console.log($(this).find('.fa-edit').text());
+            $(this).html('<i class="fab fa fa-save fa-sm pr-2" aria-hidden="true"></i>Save');
+           
+        });
+
+
+            //function on delete
+            $(document).on("click",".btnDel", function(){
+                var rowObj = $(this).parents('tr');
+                var nameObjtext = $(this).parents('td').siblings().first().text();
+                var quesObjtext =  $(this).parents('td').siblings('.questionRow').text();
+            //delete on confirmation    
+                $(document).on("click",".btnYes", function(){
+                    $.ajax({
+                        type: "POST",
+                        url: "ButtonInsert.php",
+                        data: {
+                            TableNameDel: nameObjtext,
+                            TableQuesDel: quesObjtext,
+                            },
+
+                        success: function(data) {
+                            if(data == 'Delete Success'){
+                                rowObj.remove();
+                                $("#modalConfirmDelete").modal("hide");
+                            }
+                        }
+                    });
+                });    
+            });
+
+            // function on save     
+            $(document).on("click",".btnSave", function(){
+            var dateObjtext = $(this).parents('td').prev().find('select').val();
+            var nameObjtext = $(this).parents('td').siblings().first().text();
+            var quesObjtext =  $(this).parents('td').siblings('.questionRow').text();
+            var currObj = $(this);
+            var dateObjhtml = $(this).parents('td').prev();
+            if(dateObjtext == 'NULL'){
+                // function call to update date with Null
+               
+                $.ajax({
+                    type: "POST",
+                    url: "ButtonInsert.php",
+                    data: {
+                        TableName: nameObjtext,
+                        TableQues: quesObjtext,
+                        },
+
+                    success: function(data) {
+                            if(data == 'Date Success'){
+                            var value = 'NULL';
+                            value = value.italics();
+                            dateObjhtml.html(value);
+                            currObj.removeClass('btn-success btnSave');
+                            currObj.addClass('btn-indigo btnEdit');
+                            currObj.html('');
+                            }    
+                    }
+            });   
+                  
+            }
+
+        });
+
+            //function to load default question set
+            function  card1load(){
+                $.ajax({
+                        type: "POST",
+                        url: "ButtonInsert.php",
+                        data: {
+                                currSets: 'set',
+                                UpdateAdmin: accessName,
+                            },
+
+                        success: function(data) {
+                          //  console.log(data);
+                            var jsonObj2 = JSON.parse(data);
+                            var myValue = jsonObj2['QuestionSet'];
+                            $('#validationDefault22').val(myValue);
+                            $('#validationDefault23').val(jsonObj2['StartDate']);
+                            $('#validationDefaultUsername22').val(jsonObj2['EndDate']);
+                            $('#filterSet').val(myValue);
+                        }
+                    });
+            }
+            //function to load data from database
+            function displayData(jsonData, callback){
+
+            var jsonObj = JSON.parse(jsonData);
+                    
+                    
+                        var row_count = 0;
+                        $.each(jsonObj, function(key, value) {
+                            console.log(key, value);
+                        
+                            $('table tbody').append('<tr></td><td></td><td class="questionRow"></td><td class="dateRow"></td><td><div class="btn-group" role="group" aria-label="Basic example"><button type="button" class="btn btn-indigo btn-sm btnEdit"><i class="fab fa fa-edit fa-sm pr-2" aria-hidden="true"></i>Edit</button><button type="button" class="btn btn-red btn-sm btnDel" data-toggle="modal" data-target="#modalConfirmDelete"><i class="fab fa fa-trash fa-sm pr-2" aria-hidden="true"></i>Delete</button></div></td></tr>');
+                        
+                            $.each(value, function(key, value) {
+                                var index = $('table th:contains(' + key + ')').index();
+                                if (value == null){
+                                    value = 'NULL';
+                                    value = value.italics();
+                                    $('table tbody tr:eq(' + row_count + ') td:eq(' + (index+1) + ')').find('.btnEdit').hide();
+                                    $('table tbody tr:eq(' + row_count + ') td:eq(' + (index+1) + ')').find('.btnDel').addClass("ml-5")
+                                }
+                                
+                                console.log(key, value);
+                                $('table tbody tr:eq(' + row_count + ') td:eq(' + index + ')').html(value);
+                                
+
+                        });
+                        row_count +=1;
+                        });
+                        callback();
+        }
+
+            //function to load datatable
+            function getDatatable(){
+                $('#dtBasicExample').DataTable({
+                        columnDefs: [{
+                        orderable: false,
+                        targets: 3
+                        }]
+                    });
+
+                $('.dataTables_length').addClass('bs-select');
+                $('#dtBasicExample_filter').html("<div class='md-form'><input type='text' id='form1' class='form-control' placeholder='Search'></div>");
+                
+                    
+                }
+            });
+    </script>        
+</body>
+</html>
