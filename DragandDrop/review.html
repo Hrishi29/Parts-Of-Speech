@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>W3.CSS</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<style>
+        ul.a {
+          list-style-type: disc;
+        }
+        li{
+            padding-bottom: 5px;
+            font-size: 1.2em;
+            font-family: 'Adamina';
+        }
+
+        .w3-myfont {
+            font-family: "Comic Sans MS", cursive, sans-serif;
+        }
+</style>        
+</head>
+<body>
+
+<div class="container">
+      <!-- Instructions Modal -->
+  <div class="modal" id="insModal" role="dialog">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h2 class="modal-title w3-myfont" style="text-align: center">Welcome to GrammarCat</h2>
+            </div>
+            <div class="modal-body">
+                <div class="w3-container">
+                    <ul class="a">
+                        <li>The application is a quiz which will contain a set of questions and each question will contain certain words for which you have to identify the parts of speech by dragging and 
+                                dropping those words into their respective boxes</li>
+                            <li>Each identifyable word is worth 3 points. The maximum points that could be scored for each sentence will be displayed on the screen. </li>
+                            <li>You will have 3 attempts to identify the parts of speech for each word and for every incorrect attempt 1 point would be deducted from the maximum score. However after the 
+                               third attempt you won't lose a point as the answer would be displayed on the screen via hint. At the end of each sentence you would have correctly identified the parts of 
+                               speech for all the words in the sentence.
+                            <br><i>Note: For every incorrect attempt a hint will be displayed to correctly identify the parts of speech for the given word</i>.</li>        
+                            <li>You cannot go to the next sentence until you have identified all the words for the given sentence. However you can review the previously attempted sentences and check for the 
+                                scores for reference.</li>
+                            <li>Once you start the quiz, it will be available for the next <b>7 days</b> only.</li>
+                    </ul>        
+                </div>
+            </div>
+            <div class="modal-footer container-fluid">
+                <div class="row">
+                    <div class="col-sm-12 text-center">    
+                        <button class="w3-btn w3-blue w3-round-xxlarge w3-large w3-padding-large w3-card-4">Begin</button>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>   
+
+</div>
+</body>
+<script>
+$(document).ready(function(){
+  
+    $("#insModal").modal();
+  
+});
+</script>
+</html> 

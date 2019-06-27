@@ -1,0 +1,151 @@
+{
+
+    "Set1": {
+        "Sentence":"I kicked my foot into that chair over there and hurt my toe",
+        "I":"Subjective Pronoun",
+        "kicked":"Main Verb",
+        "my":"Possessive Pronoun",
+        "foot":"",
+        "into":"Preposition",
+        "that":"",
+        "chair":"",
+        "over":"Preposition",
+        "there":"",
+        "and":"Conjunction",
+        "hurt":"Main Verb",
+        "toe":""
+    },
+    
+    "Set2": {
+        "Sentence":"I like to-go out to the amusement park when we are at Myrtle Beach or Nags Head",
+        "I":"Subjective Pronoun",
+        "like":"Main Verb",
+        "to":"Preposition",
+        "to go":"Secondary Verb",
+        "we":"Subjective Pronoun",
+        "are":"Main Verb",
+        "or":"Conjunction",
+        "out":"",
+        "the":"",
+        "amusement":"",
+        "park":"",
+        "when":"",
+        "at":"",
+        "Myrtle":"",
+        "Beach":"",
+        "Nags":"",
+        "Head":""
+    },
+    
+    "Set3": {
+        "Sentence":"I am not finished with my farm",
+        "I":"Subjective Pronoun",
+        "am":"Auxiliary Verb",
+        "finished":"Main Verb",
+        "with":"Preposition",
+        "my":"Possessive Pronoun",
+        "not":"",
+        "farm":""
+    },
+    
+    "Set4": {
+        "Sentence":"After we finish our castle, can we play a game?",
+        "After":"Preposition",
+        "we":"Subjective Pronoun",
+        "finish":"Main Verb",
+        "our":"Possessive Pronoun",
+        "can":"Auxiliary Verb",
+        "play":"Main Verb",
+        "game":"",
+        "castle":"",
+        "a":""
+        
+    },
+    
+        
+    "Set5": {
+        "Sentence":"You can get the rest of the blocks that are in there",
+        "You":"Subjective Pronoun",
+        "can":"Auxiliary Verb",
+        "get":"Main Verb",
+        "the":"",
+        "rest":"",
+        "of":"Preposition",
+        "blocks":"",
+        "that":"Conjunction",
+        "are":"Main Verb",
+        "in":"",
+        "there":""
+        
+    },
+    
+    "Set6":{
+        "Sentence":"I will help you pick up yours",
+        "I":"Subjective Pronoun",
+        "will":"Auxiliary Verb",
+        "help":"Main Verb",
+        "you":"Objective Pronoun",
+        "pick":"Main Verb",
+        "up":"",
+        "yours":"Possessive Pronoun"
+    },
+    
+    "Set9":{
+        "Sentence":"Lets go-find the game that I want to-play",
+        "Let":"Main Verb",
+        "go find":"Secondary Verb",
+        "the":"",
+        "game":"",
+        "that":"Conjunction",
+        "I":"Subjective Pronoun",
+        "want":"Main Verb",
+        "to play":"Secondary Verb"
+        
+    },
+    
+    "Set8":{
+        "Sentence":"The dog and the cat are trying to-hit him on the head",  
+        "The":"",
+        "dog":"",
+        "and":"Conjunction",
+        "the":"",
+        "cat":"",
+        "are":"Auxiliary Verb",
+        "trying":"Main Verb",
+        "to hit":"Secondary Verb",
+        "him":"Objective Pronoun",
+        "on":"Preposition",
+        "head":""
+    },
+    
+    "Set7":{
+        "Sentence":"I mean, you should make this one open his mouth",
+        "I":"Subjective Pronoun",
+        "mean":"Main Verb",
+        "you":"Objective Pronoun",
+        "should":"Auxiliary Verb",
+        "make":"Main Verb",
+        "this":"",
+        "one":"",
+        "open":"Main Verb",
+        "his":"Possessive Pronoun",
+        "mouth":""
+        
+    },
+    
+    "Sentence10":{
+        "Sentence":"That is for when we are making a plane or something",
+        "That":"Conjunction",
+        "is":"Main Verb",
+        "for":"Preposition",
+        "when":"",
+        "we":"Subjective Pronoun",
+        "are":"",
+        "making":"Main Verb",
+        "a":"",
+        "plane":"",
+        "or":"Conjunction",
+        "something":""
+
+    }
+ }
