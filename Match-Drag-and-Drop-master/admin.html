@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<title>Admin</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script src="https://code.jquery.com/jquery-3.4.0.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
+<script src="https://momentjs.com/downloads/moment.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+<style>
+
+.portalColor{
+
+    background-color: #00223d;
+    color: white;
+}
+
+.backBox{
+    width: 50%;
+    margin: 20px 0 20px 0;
+}
+#loginBtn{
+    width: 20%;
+    margin-bottom:20px;
+}
+
+input.w3-check{
+
+    width: 15px;
+    height: 15px;
+    top: 3px;
+}
+
+.btnEdit{
+
+    margin: 0 10px;
+}
+
+.bottomLeft{
+    display: none;
+}
+
+.barBottom {
+
+    margin: 20px 0 20px 0;
+}
+
+h3, label {
+
+    font-family: 'Archivo Black';
+}
+
+label {
+
+    font-size: 1.3em;
+    padding-bottom: 5px;
+}
+
+h3 {
+    margin: 0;
+}
+
+.usersBar{
+
+    margin: 0 0 10px 0;
+}
+
+.w3-border-bottom {
+
+    padding-top: 20px;
+}
+</style>
+<body>
+
+<div class="w3-container">
+  
+  
+  <div class="w3-card-4 w3-display-topmiddle backBox cardCss">
+    <div class="w3-container portalColor">
+            <h2>GrammarCat Admin Portal</h2>
+    </div>
+
+    <div class="w3-container barBottom">
+            <div class="w3-row-padding">
+                    <div class="w3-third">
+                      <label>Current QuestionSet:</label>
+                      <select class="w3-select w3-border" name="option">
+                            <option value="questionset1">Question Set 1</option>
+                            <option value="questionset2">Question Set 2</option>
+                            <option value="questionset3">Question Set 3</option>
+                      </select>
+                    </div>
+                    <div class="w3-third ">
+                      <label>Start Date:</label>  
+                      <input class="w3-input w3-border" type="text" placeholder="yyyy/mm/dd">
+                    </div>
+                    <div class="w3-third ">
+                      <label>End Date:</label>  
+                      <input class="w3-input w3-border" type="text" placeholder="yyyy/mm/dd">
+                    </div>
+            </div>
+
+            <div class="w3-border-bottom"></div>
+    </div> 
+    <div class="w3-container">
+       <h3>Users List</h3>
+       <div class="w3-bar usersBar">
+           <div class="w3-left">
+            <select class="w3-select" name="option">
+                    <option value="questionset1">Question Set 1</option>
+                    <option value="questionset2">Question Set 2</option>
+                    <option value="questionset3">Question Set 3</option>
+            </select>
+           </div>
+           <div class="w3-right"><input class="w3-input" type="text" placeholder="Search"></div>
+        </div>    
+        <div class="w3-responsive ">
+                <table class="w3-table-all w3-card-4 w3-small w3-hoverable w3-centered">
+                     <thead>
+                        <tr style="background-color: #00223d;color: white">
+                          <th></th>
+                          <th>Name</th>
+                          <th>QuestionSet</th>
+                          <th>Date</th>
+                        </tr>
+                    </thead>
+                      <tbody>  
+
+                    </tbody> 
+                </table>
+        </div>     
+    </div>
+    
+    <div class="w3-container">
+            <div class="w3-bar barBottom">
+                    <div class="w3-left bottomLeft"><button class="w3-btn w3-small w3-card-4 w3-green btnEdit">Save</button><button class="w3-btn w3-small w3-card-4 w3-red">Delete</button></div>
+                    <div class="w3-right">
+                        
+                        <div class="w3-bar w3-tiny pageDiv">
+                            
+                            <a href="#" class="w3-button">&laquo;</a>
+                            <a href="#" class="w3-button w3-red">1</a>
+                            <a href="#" class="w3-button">2</a>
+                            <a href="#" class="w3-button">3</a>
+                            <a href="#" class="w3-button">4</a>
+                            <a href="#" class="w3-button">&raquo;</a>
+                           
+                        </div>
+                        
+                    </div>
+            </div>
+
+    </div>  
+    <!--
+    <form class="w3-container">
+      <p>
+      <label><b>UserName</b></label></p>
+      <input class="w3-input" type="text">
+      <p>    
+      <label><b>Password</b></label></p>     
+      <input  class="w3-input" type="password">
+
+      <button id="loginBtn" class="w3-btn w3-round-xxlarge w3-large w3-card-4 portalColor">Login</button>
+    </form> -->
+  </div>
+</div>
+<script>
+jQuery(function($){
+
+var user_entries;    
+
+    $.ajax({
+
+//AJAX type is "Post".
+
+        type: "POST",
+
+        //Data will be sent to "ajax.php".
+
+        url: "rows.php",
+
+        //Data, that will be sent to "ajax.php".
+
+        data: {
+
+            //Assigning value of "name" into "search" variable.
+            
+            QuestionnumSet: 'questionset2',
+            
+        },
+
+        success: function(data) {
+
+            var jsonObj = JSON.parse(data);
+            user_entries = jsonObj.length;
+            pageEntries();
+            var row_count = 0;
+            $.each(jsonObj, function(key, value) {
+                console.log(key, value);
+                $('table tbody').append('<tr><td style="width: 10%"><input class="w3-check" type="checkbox"></td><td style="width: 25%"></td><td class="questionRow" style="width: 25%"></td><td class="dateRow" style="width: 30%"></td></tr>');
+                $.each(value, function(key, value) {
+                    var index = $('table th:contains(' + key + ')').index();
+                    console.log(key, value);
+                    $('table tbody tr:eq(' + row_count + ') td:eq(' + index + ')').text($.trim(value));
+
+
+            });
+            row_count +=1;
+            });
+            
+
+        }
+
+});
+
+function pageEntries(){
+    var rowEntries = 10;
+    var pageNums = Math.floor(user_entries / rowEntries);
+    pageNums += 1;
+    $('.pageDiv').html("");
+    for (i = 1; i <= pageNums; i++){
+        $('.pageDiv').append('<a href="#" class="w3-button w3-red">' + i + '</a>');
+   
+    } 
+}
+
+$(document).on("change",".w3-check", function(){
+
+    if(this.checked){
+
+        $('.bottomLeft').show();
+     //  $(this).parent().siblings('.dateRow').append('<span id="editDel"><button class="w3-btn w3-tiny w3-card-4 w3-teal btnEdit">Edit</button><button class="w3-btn w3-tiny w3-card-4 w3-red">Delete</button></span>');
+        $(this).parent().siblings('.questionRow').html()
+    }
+
+    else{
+      
+        if($("input[type='checkbox']").prop('checked')==false){
+            
+            $('.bottomLeft').hide();
+        }
+
+    }
+
+});
+
+});
+</script>
+</body>
+</html>
